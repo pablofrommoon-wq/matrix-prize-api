@@ -2,12 +2,14 @@ const { Connection, PublicKey } = require('@solana/web3.js');
 const axios = require('axios');
 
 module.exports = async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://project-c6ifdlomqxccdcjzkntq.framercanvas.com'); // Allow your Framer origin
+  // Enable CORS for your Framer origin
+  res.setHeader('Access-Control-Allow-Origin', 'https://project-c6ifdlomqxccdcjzkntq.framercanvas.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
+  // Handle preflight OPTIONS request
   if (req.method === 'OPTIONS') {
-    return res.status(200).end(); // Handle preflight requests
+    return res.status(200).end();
   }
 
   try {
