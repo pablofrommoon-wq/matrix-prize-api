@@ -2,6 +2,14 @@ const { Connection, PublicKey } = require('@solana/web3.js');
 const axios = require('axios');
 
 module.exports = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://project-c6ifdlomqxccdcjzkntq.framercanvas.com'); // Allow your Framer origin
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end(); // Handle preflight requests
+  }
+
   try {
     // Fetch SOL balance
     const connection = new Connection('https://solana-mainnet.g.alchemy.com/v2/dmWve-nK7N6weLy6-sTOV', 'confirmed');
